@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Online Learning</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #2a7de1;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background-color: #fff;
+      padding: 30px 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+    }
+
+    .stat {
+      text-align: center;
+      margin: 15px;
+      flex: 1 1 150px;
+    }
+
+    .stat h3 {
+      font-size: 2.2em;
+      color: #4f46e5;
+      margin: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .stats {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .availab{
+      text-align: center;
+      margin-top: 6%;
+    }
+  </style>
+</head>
+<body>
+<header>
+    <h1>Digital Learning</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+       <a href="click.html">Signout</a>
+    </nav>
+  </header>
+  <div class="availab">
+    <h1>About Our Online Learning Platform</h1>
+    <p>Learn from the best, anytime and anywhere.</p>
+  </div>
+
+  <div class="container">
+    <section>
+      <h2>Our Mission</h2>
+      <p>
+        We are dedicated to democratizing education by providing top-quality online courses designed by industry leaders and academic experts.
+        Our aim is to empower learners to advance their careers and knowledge through accessible, affordable learning.
+      </p>
+    </section>
+
+    <section>
+      <h2>Why Choose Us?</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h3>Expert Instructors</h3>
+          <p>Courses created by professionals from leading universities and companies.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Self-Paced Learning</h3>
+          <p>Start and finish on your own schedule, with lifetime access to materials.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Certifications</h3>
+          <p>Earn verifiable certificates to showcase your skills to employers.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Global Community</h3>
+          <p>Join a network of passionate learners and professionals around the world.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Our Impact</h2>
+      <div class="stats">
+        <div class="stat">
+          <h3 data-count="100000">0</h3>
+          <p>Learners Enrolled</p>
+        </div>
+        <div class="stat">
+          <h3 data-count="500">0</h3>
+          <p>Courses Offered</p>
+        </div>
+        <div class="stat">
+          <h3 data-count="95">0</h3>
+          <p>% Satisfaction Rate</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Online Learning. All rights reserved.
+  </footer>
+
+  <script>
+    // Count up animation for stats
+    const counters = document.querySelectorAll(".stat h3");
+    const speed = 100;
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute("data-count");
+        const count = +counter.innerText;
+        const increment = Math.ceil(target / speed);
+
+        if (count < target) {
+          counter.innerText = count + increment;
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      // Trigger when in view
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          updateCount();
+          observer.disconnect(); // Run once
+        }
+      }, { threshold: 0.6 });
+
+      observer.observe(counter);
+    });
+  </script>
+
+</body>
+</html>
